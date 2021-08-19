@@ -518,7 +518,7 @@ def update_dqlite_ip(host):
         yaml.dump(update_data, f)
     service("start", "k8s-dqlite")
     time.sleep(5)
-    service("stop", "apiserver")
+    service("start", "apiserver")
     time.sleep(10)
     attempts = 12
     while True:
