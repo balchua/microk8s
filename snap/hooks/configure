@@ -532,9 +532,7 @@ then
     snapctl stop ${SNAP_NAME}.daemon-apiserver
   fi
 
-  refresh_opt_in_config etcd-servers http://127.0.0.1:12379 kube-apiserver
-  refresh_opt_in_config etcd-certfile \${SNAP_DATA}/var/kubernetes/backend/cluster.crt kube-apiserver
-  refresh_opt_in_config etcd-keyfile \${SNAP_DATA}/var/kubernetes/backend/cluster.key kube-apiserver
+  refresh_opt_in_config etcd-servers unix://\${SNAP_DATA}/var/kubernetes/backend/kine.sock:12379 kube-apiserver
   skip_opt_in_config storage-backend kube-apiserver
   skip_opt_in_config storage-dir kube-apiserver
 
